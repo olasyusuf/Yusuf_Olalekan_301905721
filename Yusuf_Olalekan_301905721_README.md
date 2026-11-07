@@ -10,7 +10,7 @@ A production-ready data architecture and deployment blueprint optimized for ente
 
 ## Portfolio folders
 
-- portfolio-1-database-design: design, schema and normalisation.
+- [portfolio-1-database-design](./portfolio-1-database-design/Yusuf_Olalekan_301905721_P1_README.md): design, schema and normalisation.
 - portfolio-2-query-optimisation: queries, plans and performance analysis.
 - portfolio-3-transactions-concurrency: commit, rollback and concurrency.
 - portfolio-4-nosql: NoSQL model, implementation and suitability.
