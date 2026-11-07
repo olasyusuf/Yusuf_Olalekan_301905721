@@ -23,10 +23,9 @@
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Entities](#entities)
-- [Attributes and keys](#attributes-and-keys)
-- [Relationships](#relationships)
-- [Business rules and constraints](#business-rules-and-constraints)
+- [Ride-Hailing & Logistics System ER Diagram](#ride-hailing--logistics-system-er-diagram)
+- [Key and Symbol Explanations](#key-and-symbol-explanations)
+- [Optional Fields](#optional-fields)
 
 
 <br />
@@ -36,8 +35,11 @@
   [ [↑ to top ↑](#table-of-contents) ]
 </div>
 
-## Entity Relationship Diagram
+## Ride-Hailing & Logistics System ER Diagram
 
+<!-- ![Ride-Hailing & Logistics System ER Diagram](./screenshots/Yusuf_Olalekan_301905721_P1_ERDiagram.png) -->
+
+```mermaid
 erDiagram
     direction LR
     dispatch_center {
@@ -93,6 +95,7 @@ erDiagram
     driver |o--o{ trip : "executes"
     trip ||--o| payment : "settles"
 
+```
 
 ---
 
@@ -102,3 +105,44 @@ erDiagram
 
   [ [↑ to top ↑](#table-of-contents) ]
 </div>
+
+
+
+## Key and Symbol Explanations
+
+- PK (Primary Key): A field that Uniquely identifies a single record within a table. For example, center_id uniquely identifies a specific corporate dispatch center.
+
+- FK (Foreign Key): A field that establishes a link between tables by referencing the primary key of another table. For example, the rider_id in the trip table connects each trip to the specific customer record who requested it.
+
+- UK (Unique Key): A constraint that ensures values in a field are distinct across the table. For example, license_plate prevents multiple vehicles from sharing the same registration string.
+
+- Relationship Symbols: The diagram uses line ends to show cardinality constraints. The line || represents exactly one, |o represents zero or one, and o{ represents zero or many records. For instance, the notation between rider and trip indicates that exactly one rider (||) can request zero or more historical trips (o{).
+
+---
+
+<br />
+
+<div align="right">
+
+  [ [↑ to top ↑](#table-of-contents) ]
+</div>
+
+
+## Optional Fields
+
+- driver.current_vehicle_id: This field is optional because a driver can be off-duty or unassigned to a fleet asset.
+
+- trip.driver_id: This remains empty when a request is initialized and is only filled once a courier accepts the dispatch.
+
+- trip.dropoff_timestamp: This field is optional and remains null until the driver successfully completes the delivery.
+- payment.settled_at: This remains empty while the transaction status is pending or failed.
+
+---
+
+<br />
+
+<div align="right">
+
+  [ [↑ to top ↑](#table-of-contents) ]
+</div>
+
