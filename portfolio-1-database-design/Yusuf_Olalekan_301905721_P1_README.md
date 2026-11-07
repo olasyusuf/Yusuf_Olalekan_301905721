@@ -1,7 +1,7 @@
 [Home](../Yusuf_Olalekan_301905721_README.md)
 <div align="center">
   <br>
-  <h1>Ride-Hailing & Logistics Database Design</h1>
+  <h1>Portfolio 1 Database Design and Modelling</h1>
 </div>
 
 
@@ -81,6 +81,27 @@ Register a new rider profile; provision a corporate dispatch center node; add a 
 
 ## Scope
 The database is bounded to the operational management of one localized metropolitan city across distinct regional corporate dispatch centers using fictional cargo loads and transit histories. Dynamic map routing matrices, variable surge pricing models, cash on delivery (COD) floating balances, driver commission payouts, and security user authentication frameworks are excluded from this implementation.
+
+---
+
+<br />
+
+<div align="right">
+
+  [ [↑ to top ↑](#table-of-contents) ]
+</div>
+
+## Design and implementation files
+
+| File / Component | Contents & Implementation Details |
+| :--- | :--- |
+| [ **Design** ](./Yusuf_Olalekan_301905721_P1_Design.md) | Entities, attributes, keys, relationships, and business rules. |
+| **ER diagram** | Visual mapping of the four tables and their relationships. |
+| **Normalisation** | Example tables demonstrating the progression of 1NF, 2NF, and 3NF. |
+| **Schema** | PostgreSQL table definitions, keys, date checks, and open-loan index. |
+| **Sample records** | Fictional seed data for members, a book, physical copies, and loans. |
+| **Constraint tests** | Six deliberately invalid inserts alongside the final count query. |
+| **Evidence** | Documented links to execution screenshots stored in `screenshots/`. |
 
 ---
 
