@@ -15,6 +15,8 @@
 - [Main operations](#main-operations)
 - [Business rules](#business-rules)
 - [Scope](#scope)
+- [Implementation](#implementation)
+- [Test results](#test-results)
 
 
 <br />
@@ -111,3 +113,37 @@ The database is bounded to the operational management of one localized metropoli
 
   [ [↑ to top ↑](#table-of-contents) ]
 </div>
+
+## Implementation
+The database runs on PostgreSQL 15+ in a localized computing cluster. Its name is `cargo_ride_portfolio`. The schema creates `dispatch_centers`, `vehicles`, `drivers`, `riders`, `trips`, and `payments`. Each has an automatically generated primary key using secure UUID data types. Foreign keys link drivers to dispatch centers, trips to riders and drivers, and payments to trips.
+
+Operational codes, license plates, driver licenses, rider account numbers, emails, phone numbers, and payment trip links are unique. Trip date checks prevent a dropoff timestamp before a pickup timestamp. The `uq_idx_active_driver_trip` partial unique index allows at most one active delivery assignment per driver while retaining completed transactional histories.
+
+The schema and sample statements were executed in order and committed. The invalid inserts were then run separately, outside a transaction block, to check each rule independently.
+
+---
+
+<br />
+
+<div align="right">
+
+  [ [↑ to top ↑](#table-of-contents) ]
+</div>
+
+## Test results
+All eight invalid inserts were rejected by the intended rule: a missing dispatch center physical location, missing trip cargo weight, repeated operational code, repeated rider email, duplicated vehicle assignment for a single driver, nonexistent dispatch center link for a driver, nonexistent trip link for a payment, invalid vehicle cargo volume class string, negative cargo weight value, dropoff timeline sequence violation, and a second active assignment for an occupied driver. The terminal logs show the corresponding errors.
+
+After the tests, the database contains 2 dispatch centers, 3 fleet vehicles, 3 drivers, 3 riders, 3 trips, and 1 processed payment ledger entry. One trip is completed with a settled payment, one is requested, and one remains active in transit. The failed inserts added no rows.
+
+These tests cover the listed constraints. The real-time driver allocation and automatic availability status update workflow still require procedural transaction logic and concurrency testing in Portfolio 3; the static table definitions alone do not enforce it.
+
+---
+
+<br />
+
+<div align="right">
+
+  [ [↑ to top ↑](#table-of-contents) ]
+</div>
+
+Reference: [PostgreSQL 16 constraints](https://www.postgresql.org/docs/16/ddl-constraints.html).
