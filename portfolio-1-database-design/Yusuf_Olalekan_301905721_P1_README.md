@@ -101,7 +101,7 @@ The database is bounded to the operational management of one localized metropoli
 | [**Schema**](./Yusuf_Olalekan_301905721_P1_Schema.sql) | PostgreSQL table definitions, keys, checks, and index. |
 | [**Sample records**](./Yusuf_Olalekan_301905721_P1_SampleData.sql) | Valid baseline test dataset. |
 | [**Constraint tests**](./Yusuf_Olalekan_301905721_P1_ConstraintTests.sql) | Failure testing suite and summary audit. |
-| **Evidence** | Documented links to execution screenshots stored in `screenshots/`. |
+| [**Evidence**](./Yusuf_Olalekan_301905721_P1_Evidence.md) | Documented links to execution screenshots stored in `screenshots/`. |
 
 ---
 
