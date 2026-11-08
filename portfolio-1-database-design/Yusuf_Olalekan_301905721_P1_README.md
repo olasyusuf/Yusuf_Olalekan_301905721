@@ -97,7 +97,7 @@ The database is bounded to the operational management of one localized metropoli
 | :--- | :--- |
 | [ **Design** ](./Yusuf_Olalekan_301905721_P1_Design.md) | Entities, attributes, keys, relationships, and business rules. |
 | [ **ER diagram** ](./Yusuf_Olalekan_301905721_P1_ERDiagram.md) | Visual mapping of the four tables and their relationships. |
-| **Normalisation** | Example tables demonstrating the progression of 1NF, 2NF, and 3NF. |
+| [**Normalisation**](./Yusuf_Olalekan_301905721_P1_Normalisation.md) | Example tables demonstrating the progression of 1NF, 2NF, and 3NF. |
 | **Schema** | PostgreSQL table definitions, keys, date checks, and open-loan index. |
 | **Sample records** | Fictional seed data for members, a book, physical copies, and loans. |
 | **Constraint tests** | Six deliberately invalid inserts alongside the final count query. |
