@@ -95,12 +95,12 @@ The database is bounded to the operational management of one localized metropoli
 
 | File / Component | Contents & Implementation Details |
 | :--- | :--- |
-| [ **Design** ](./Yusuf_Olalekan_301905721_P1_Design.md) | Entities, attributes, keys, relationships, and business rules. |
+| [ **Design** ](./Yusuf_Olalekan_301905721_P1_Design.md) | Define the data structure by mapping out entities, attributes, key identifiers, relationships, and business rules. |
 | [ **ER diagram** ](./Yusuf_Olalekan_301905721_P1_ERDiagram.md) | Visual mapping of the four tables and their relationships. |
-| [**Normalisation**](./Yusuf_Olalekan_301905721_P1_Normalisation.md) | Example tables demonstrating the progression of 1NF, 2NF, and 3NF. |
-| [**Schema**](./Yusuf_Olalekan_301905721_P1_Schema.sql) | PostgreSQL table definitions, keys, date checks, and open-loan index. |
-| [**Sample records**](./Yusuf_Olalekan_301905721_P1_SampleData.sql) | Fictional seed data for members, a book, physical copies, and loans. |
-| **Constraint tests** | Six deliberately invalid inserts alongside the final count query. |
+| [**Normalisation**](./Yusuf_Olalekan_301905721_P1_Normalisation.md) | Database Normalization Case Study: Tracking Data Evolution from 1NF through 3NF. |
+| [**Schema**](./Yusuf_Olalekan_301905721_P1_Schema.sql) | PostgreSQL table definitions, keys, checks, and index. |
+| [**Sample records**](./Yusuf_Olalekan_301905721_P1_SampleData.sql) | Valid baseline test dataset. |
+| [**Constraint tests**](./Yusuf_Olalekan_301905721_P1_ConstraintTests.sql) | Failure testing suite and summary audit. |
 | **Evidence** | Documented links to execution screenshots stored in `screenshots/`. |
 
 ---
