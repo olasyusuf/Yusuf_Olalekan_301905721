@@ -1,7 +1,8 @@
 -- ============================================================================
 -- MIT 8103 Advanced Database Systems: Practical Portfolio Blueprint
 -- Case Study Focus: Ride-Hailing & Logistics System (Core Database Architecture)
--- Target Platform: PostgreSQL 15+
+-- Target Platform: PostgreSQL 16
+-- ============================================================================
 -- File: portfolio-1-database-design/Yusuf_Olalekan_301905721_P1_Schema.sql
 -- Run in the empty cargo_ride_portfolio database.
 -- ============================================================================
