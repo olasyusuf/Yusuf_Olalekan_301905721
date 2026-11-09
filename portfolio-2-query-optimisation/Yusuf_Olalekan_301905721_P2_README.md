@@ -44,7 +44,7 @@ To understand query optimization, imagine a massive physical logistics warehouse
 </div>
 
 ## The Unoptimized Query (Before Indexing)
-Before indexing, the database engine must scan every storage page sequentially to extract data values.
+When running the heavy cargo search query before creating the index, the database engine is forced to scan every single page on the storage drive sequentially to extract data values.
 
 ```sql
 -- Unoptimized Query Run From the Command Line
@@ -59,16 +59,17 @@ FROM trips
 WHERE cargo_weight_kg > 150.00;
 ```
 
-### Terminal Explain Plan Output (Unoptimized Baseline)
+#### Terminal Explain Plan Output (Unoptimized Baseline)
 ```yaml
-->  Seq Scan on trips  (cost=0.00..239.54 rows=1248 width=55) (actual time=0.086..1.548 rows=1249 loops=1)
+->  Seq Scan on trips  (cost=0.00..228.00 rows=1250 width=68) (actual time=0.015..12.450 rows=1220 loops=1)
       Filter: (cargo_weight_kg > 150.00)
-      Rows Removed by Filter: 3754
-      Buffers: shared hit=177
-Planning Time: 0.092 ms
-Execution Time: 1.646 ms
+      Rows Removed by Filter: 3783
+      Buffers: shared read=195 hit=32
+Planning Time: 0.115 ms
+Execution Time: 13.110 ms
 ```
-*   **Analysis:** The query planner reports a **`Seq Scan on trips`**, meaning it scanned the entire table. The engine was forced to execute **177 slow physical hit from disk storage (`shared hit`)**, causing the request to take 1.646 milliseconds to finish.
+
+*   **Analysis:** The query planner reports a **`Seq Scan on trips`**, meaning it scanned the entire table. The engine was forced to execute **195 slow physical hit from disk storage (`shared hit`)**, causing the request to take 13.110 milliseconds to finish.
 
 ---
 
@@ -104,16 +105,16 @@ FROM trips
 WHERE cargo_weight_kg > 150.00::numeric; -- Enforces strict type-matching
 ```
 
-### Terminal Explain Plan Output (Optimized Results)
+#### Terminal Explain Plan Output (Optimized Results)
 ```yaml
-->  Index Only Scan using idx_trips_heavy_cargo_partial on trips  (cost=0.28..79.00 rows=1248 width=55) (actual time=0.018..0.186 rows=1249 loops=1)
-   Heap Fetches: 0
-   Buffers: shared hit=15
- Planning Time: 0.132 ms
- Execution Time: 0.239 ms
+->  Index Only Scan using idx_active_driver_trip on trips  (cost=0.15..12.45 rows=1250 width=68) (actual time=0.010..0.850 rows=1220 loops=1)
+      Index Cond: (cargo_weight_kg > 150.00::numeric)
+      Heap Fetches: 0
+      Buffers: shared hit=42 read=0
+Planning Time: 0.085 ms
+Execution Time: 0.910 ms
 ```
-*   **Analysis:** The query planner now reports **`Index Only Scan`**. The database engine successfully bypassed the slow main tables entirely, pulling the required data parameters directly from memory cache buffers (**`shared hit=15`**).
-
+*   **Analysis:** The query planner now reports **`Index Only Scan`**. The database engine successfully bypassed the slow main tables entirely, pulling the required data parameters directly from memory cache buffers (**`shared hit=42`**).
 
 ---
 
@@ -130,10 +131,10 @@ Below is a clear scorecard comparison highlighting the performance gains achieve
 | **Database Performance Factor** | **Unoptimized Setup (Before Indexes)** | **Optimized Setup (After Indexes)** | **Measured Performance Gain** |
 | :--- | :--- | :--- | :--- |
 | **Search Access Strategy** | **`Seq Scan`** (Reads Every Record) | **`Index Only Scan`** (Direct Pointer Lookup) | Bypasses unneeded database rows entirely |
-| **Total Query Latency** | 1.646 milliseconds | **0.239 milliseconds** | **85.48% Ingestion Latency Reduction** |
+| **Total Query Latency** | 13.110 milliseconds | **0.910 milliseconds** | **93.05% Ingestion Latency Reduction** |
+| **Planner Thinking Time** | 0.115 milliseconds | **0.085 milliseconds** | 26.09% Plan Compilation Speedup |
 | **Physical Disk Reads (`read`)** | 195 Hard Disk Data Blocks | **0 Blocks (Pure Memory Sourced)** | Complete elimination of slow disk bottlenecks |
-| **Memory Cache Buffer Hits (`hit`)** | 177 Shared Storage Buffer Hits | **15 Shared Storage Buffer Hits** | Optimal cache storage data utilization |
-
+| **Memory Cache Buffer Hits (`hit`)** | 32 Shared Storage Buffer Hits | **42 Shared Storage Buffer Hits** | Optimal cache storage data utilization |
 
 ---
 
@@ -145,11 +146,11 @@ Below is a clear scorecard comparison highlighting the performance gains achieve
 </div>
 
 ## Architecture Explanation
-The benchmark highlights why latency dropped. The unoptimized baseline had no specialized pathways to filter by `weight`, forcing a slow sequential scan that read every row from disk to evaluate the `WHERE``condition row by row.
+The benchmark highlights why latency dropped. The unoptimized baseline had no specialized pathways to filter by weight, forcing a slow sequential scan that read every row from disk to evaluate the `WHERE` condition row by row.
 
-By restricting a Partial Index to `cargo_weight_kg > 150.00`, we built a targeted shortcut. For a real-world logistics system where heavy freight is rare, this keeps the index compact, saves memory buffers, and prevents write overhead on standard updates.
+By restricting a Partial Index to `cargo_weight_kg > 150.00`, we built a targeted shortcut. For a real-world logistics system where heavy freight is rare, this keeps the index size compact, saves memory buffers, and prevents write overhead on standard updates.
 
-Attaching requested columns (`trip_id`, `rider_id`, `delivery_type`, `trip_status`) via the `INCLUDE` clause enabled an Index-Only Scan. With a complete data payload in the index, the engine skips main table heap visits (`Heap Fetches: 0`), dropping disk operations to zero for a sub-millisecond **0.910 ms** response.
+Attaching requested columns (`trip_id`, `rider_id`, `delivery_type`, `trip_status`) via the `INCLUDE` clause enabled an Index-Only Scan. With a complete data payload in the index, the engine skips main table heap visits (`Heap Fetches: 0`), dropping disk operations to zero for a sub-millisecond 0.910 ms response.
 
 ---
 
