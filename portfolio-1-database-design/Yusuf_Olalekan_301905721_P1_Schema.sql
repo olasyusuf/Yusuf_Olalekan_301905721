@@ -92,7 +92,7 @@ CREATE TABLE payments (
 
 -- 4.1 Partial Unique Index enforcing Business Rule 6: A driver can have at most ONE active delivery 
 -- This completely blocks conflicting operational inserts or update streams at the transaction layer
-CREATE UNIQUE INDEX uq_idx_active_driver_trip 
+CREATE UNIQUE INDEX idx_active_driver_trip 
 ON trips(driver_id) 
 WHERE (trip_status = 'EN_ROUTE');
 
