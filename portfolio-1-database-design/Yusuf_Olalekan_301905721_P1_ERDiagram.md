@@ -46,12 +46,14 @@ erDiagram
         UUID center_id PK
         VARCHAR operational_code UK
         VARCHAR physical_location
+        TIMESTAMPTZ created_at
     }
     vehicle {
         UUID vehicle_id PK
         VARCHAR license_plate UK
         VARCHAR cargo_volume_class
         DATE last_inspection_date
+        TIMESTAMPTZ created_at
     }
     driver {
         UUID driver_id PK
@@ -61,6 +63,7 @@ erDiagram
         UUID dispatch_center_id FK
         UUID current_vehicle_id FK
         VARCHAR availability_status
+        TIMESTAMPTZ created_at
     }
     rider {
         UUID rider_id PK
@@ -69,6 +72,7 @@ erDiagram
         VARCHAR last_name
         VARCHAR email UK
         VARCHAR phone_number UK
+        TIMESTAMPTZ created_at
     }
     trip {
         UUID trip_id PK
@@ -80,12 +84,14 @@ erDiagram
         TIMESTAMPTZ pickup_timestamp
         TIMESTAMPTZ dropoff_timestamp
         NUMERIC calculated_fare
+        TIMESTAMPTZ created_at
     }
     payment {
         UUID payment_id PK
         UUID trip_id FK
         NUMERIC transaction_amount
         VARCHAR payment_status
+        TIMESTAMPTZ created_at
         TIMESTAMPTZ settled_at
     }
 

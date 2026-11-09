@@ -87,7 +87,7 @@ CREATE TABLE payments (
 
 
 -- ============================================================================
--- 4. PERFORMANCE ACCELERATION INDEXES (Physical Optimization Boundaries)
+-- 4. ENFORCING BUSINESS RULE INDEX (Physical Optimization Boundaries)
 -- ============================================================================
 
 -- 4.1 Partial Unique Index enforcing Business Rule 6: A driver can have at most ONE active delivery 
@@ -95,3 +95,19 @@ CREATE TABLE payments (
 CREATE UNIQUE INDEX uq_idx_active_driver_trip 
 ON trips(driver_id) 
 WHERE (trip_status = 'EN_ROUTE');
+
+
+
+-- ============================================================================
+-- 5. TABLE ALTERATIONS (Post-Creation Enhancements)
+-- ============================================================================
+
+
+alter table vehicles
+add column created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
+
+alter table trips
+add column created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
+
+alter table payments
+add column created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
