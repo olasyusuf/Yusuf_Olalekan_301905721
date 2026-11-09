@@ -45,6 +45,7 @@ Library screenshots are located in the screenshots subfolder, while the SQL and 
 | Database Connection | [DatabaseConnection](screenshots/Yusuf_Olalekan_301905721_P1_DatabaseConnection.png) |
 | Table Creation (with Contraints) | [TableCreation 1](screenshots/Yusuf_Olalekan_301905721_P1_TableCreation1.png) |
 |  | [TableCreation 2](screenshots/Yusuf_Olalekan_301905721_P1_TableCreation2.png) |
+| Table Alteration (added created_at column) | [TableAlteration](screenshots/Yusuf_Olalekan_301905721_P1_TableAlteration.png) |
 | Table List | [TableList](screenshots/Yusuf_Olalekan_301905721_P1_TableList.png) |
 | | [Dsiaptch Center Table](screenshots/Yusuf_Olalekan_301905721_P1_DispatchCenter.png) |
 | | [Vehicle Table](screenshots/Yusuf_Olalekan_301905721_P1_Vehicles.png) |
