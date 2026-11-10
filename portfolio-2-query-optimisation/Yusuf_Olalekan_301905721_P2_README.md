@@ -165,7 +165,7 @@ Attaching requested columns (`trip_id`, `rider_id`, `delivery_type`, `trip_statu
 
 - [SQL queries](Yusuf_Olalekan_301905721_P2_Queries.sql)
 - [Test data, execution plans and index SQL](Yusuf_Olalekan_301905721_P2_Optimisation.sql)
-- [Screenshots](screenshots/): QueryResults, BeforeIndex and AfterIndex.
+- [Screenshots](screenshots/): QueryResults, BeforeIndexes and AfterIndexes.
 
 ---
 
