@@ -178,4 +178,6 @@ Attaching requested columns (`trip_id`, `rider_id`, `delivery_type`, `trip_statu
 
 ## Reference
 
-[PostgreSQL 16 — Using EXPLAIN](https://www.postgresql.org/docs/16/using-explain.html).
+- [PostgreSQL 16 — Using EXPLAIN](https://www.postgresql.org/docs/16/using-explain.html).
+
+- [PostgreSQL 16 — Unique Indexes](https://www.postgresql.org/docs/16/indexes-unique.html)
