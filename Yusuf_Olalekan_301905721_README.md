@@ -6,7 +6,7 @@ Student ID: 301905721
 
 ## Case study
 
-A production-ready data architecture and deployment blueprint optimized for enterprise **Ride-Hailing & Logistics System**.
+A production-ready data architecture and deployment blueprint optimized for enterprise **Ride-Hailing / Logistics System**.
 
 ## Portfolio folders
 

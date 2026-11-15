@@ -14,7 +14,7 @@
 
 <div align="center">
   <br>
-  <h1>Ride-Hailing & Logistics Database Design</h1>
+  <h1>Ride-Hailing / Logistics Database ERD</h1>
 </div>
 
 

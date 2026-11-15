@@ -1,6 +1,6 @@
 -- ============================================================================
 -- MIT 8103 Advanced Database Systems: Practical Portfolio Blueprint
--- Case Study Focus: Ride-Hailing & Logistics System
+-- Case Study Focus: Ride-Hailing / Logistics System
 -- Assessment Target: Portfolio 3 - Two-Session Concurrency & Locking Script
 -- Target Platform: PostgreSQL 16
 -- File: portfolio-3-transactions-concurrency/Yusuf_Olalekan_301905721_P3_Concurrency.sql

@@ -1,6 +1,6 @@
 # MIT 8103 Advanced Database Systems: Portfolio Summary
 
-**Case Study:** Ride-Hailing & Logistics System  
+**Case Study:** Ride-Hailing / Logistics System  
 **Name:** Yusuf Olalekan  
 **Student ID:** 301905721  
 **GitHub:** [olasyusuf/Yusuf_Olalekan_301905721](https://github.com/olasyusuf/Yusuf_Olalekan_301905721)  

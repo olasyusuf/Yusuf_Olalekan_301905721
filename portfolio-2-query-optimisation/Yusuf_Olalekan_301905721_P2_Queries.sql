@@ -1,6 +1,6 @@
 -- ============================================================================
 -- MIT 8103 Advanced Database Systems: Practical Portfolio Blueprint
--- Case Study Focus: Ride-Hailing & Logistics System
+-- Case Study Focus: Ride-Hailing / Logistics System
 -- Assessment Target: Portfolio 2 - Queries and Data Retrieval Engine
 -- Target Platform: PostgreSQL 16
 -- ============================================================================

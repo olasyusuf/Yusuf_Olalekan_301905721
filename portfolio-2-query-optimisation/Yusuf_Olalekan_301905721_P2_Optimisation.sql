@@ -1,6 +1,6 @@
 -- ============================================================================
 -- MIT 8103 Advanced Database Systems: Practical Portfolio Blueprint
--- Case Study Focus: Ride-Hailing & Logistics System
+-- Case Study Focus: Ride-Hailing / Logistics System
 -- File: portfolio-2-query-optimisation/Yusuf_Olalekan_301905721_P2_Optimisation.sql
 -- Target Platform: PostgreSQL 16
 -- ============================================================================
